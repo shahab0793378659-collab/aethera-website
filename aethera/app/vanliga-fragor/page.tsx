@@ -64,45 +64,53 @@ export default function VanligaFragorPage() {
           </p>
         </div>
 
-        <div className="mt-14 rounded-3xl border border-gray-200 bg-white">
+        <div className="mt-14 overflow-hidden rounded-3xl border border-[#E8E0D7] bg-white shadow-[0_18px_50px_rgba(0,0,0,0.04)]">
           {faqs.map((faq, i) => {
             const isOpen = open === i;
 
             return (
               <div
                 key={i}
-                className="border-t border-gray-200 first:border-t-0"
+                className="border-t border-[#EEE6DD] first:border-t-0"
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between px-6 py-5 text-left transition hover:bg-gray-50"
+                  className="flex w-full items-center justify-between px-6 py-5 text-left transition duration-300 hover:bg-[#F8F4EF]"
                 >
                   <span className="pr-6 text-base font-medium text-gray-900">
                     {faq.q}
                   </span>
 
                   <span
-                    className={`text-xl transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#F5F1EC] text-xl text-black transition-all duration-300 ${
+                      isOpen ? "rotate-180 bg-[#ECE4DA]" : "hover:bg-[#ECE4DA]"
                     }`}
                   >
                     ⌄
                   </span>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6">
-                    <p className="max-w-3xl leading-relaxed text-gray-700">
-                      {faq.a}
-                    </p>
+                <div
+                  className={`grid transition-all duration-300 ${
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6">
+                      <p className="max-w-3xl leading-relaxed text-gray-700">
+                        {faq.a}
+                      </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}
         </div>
 
-        <div className="mt-12 rounded-3xl border border-gray-200 bg-[#F5F1EC] p-8 text-center">
+        <div className="mt-12 rounded-3xl border border-[#E8E0D7] bg-[#F5F1EC] p-8 text-center shadow-[0_18px_50px_rgba(0,0,0,0.04)]">
           <h2 className="text-2xl font-semibold text-gray-900">
             Har du fler frågor?
           </h2>
@@ -114,7 +122,7 @@ export default function VanligaFragorPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a
               href="mailto:klinik.aethera@gmail.com"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-gray-50"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
             >
               Mejla oss
             </a>
@@ -123,7 +131,7 @@ export default function VanligaFragorPage() {
               href="https://www.instagram.com/klinik.aethera/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-gray-50"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
             >
               Instagram
             </a>
@@ -132,7 +140,7 @@ export default function VanligaFragorPage() {
               href="https://www.tiktok.com/@klinik.aethera"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-gray-50"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
             >
               TikTok
             </a>

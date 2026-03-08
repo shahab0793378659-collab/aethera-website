@@ -50,16 +50,12 @@ export default function Navbar() {
       className={[
         "fixed top-0 left-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-black/10 bg-white/75 backdrop-blur-md"
+          ? "border-b border-black/10 bg-white/80 backdrop-blur-md"
           : "border-b border-black/10 bg-white",
       ].join(" ")}
     >
       <div className="mx-auto max-w-6xl px-6 py-4">
-
-        {/* DESKTOP */}
         <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
-          
-          {/* Logo */}
           <div className="flex items-center">
             <a href="/" onClick={close}>
               <img
@@ -70,7 +66,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Center navigation */}
           <nav className="flex items-center justify-center gap-2">
             <a href="/" onClick={close} className={navLinkClass("/")}>
               Hem
@@ -105,7 +100,6 @@ export default function Navbar() {
             </a>
           </nav>
 
-          {/* Right button */}
           <div className="flex justify-end">
             <a
               href="/#boka"
@@ -116,11 +110,7 @@ export default function Navbar() {
           </div>
         </div>
 
-
-        {/* MOBILE */}
         <div className="relative flex items-center justify-between md:hidden">
-
-          {/* Logo left */}
           <a href="/" onClick={close}>
             <img
               src="/logo.png"
@@ -129,12 +119,10 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Center text */}
-          <div className="absolute left-1/2 -translate-x-1/2 font-semibold tracking-wide">
+          <div className="absolute left-1/2 -translate-x-1/2 font-semibold tracking-wide text-black/85">
             Aethera
           </div>
 
-          {/* Hamburger */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -143,15 +131,12 @@ export default function Navbar() {
           >
             <span className="text-xl">{open ? "✕" : "☰"}</span>
           </button>
-
         </div>
       </div>
 
-      {/* MOBILE MENU */}
       {open && (
         <div className="border-t border-black/10 bg-white/95 backdrop-blur-md md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4">
-
             <a href="/" onClick={close} className={navLinkClass("/")}>
               Hem
             </a>
@@ -191,7 +176,6 @@ export default function Navbar() {
             >
               Boka tid
             </a>
-
           </div>
         </div>
       )}
