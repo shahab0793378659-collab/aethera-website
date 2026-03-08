@@ -109,27 +109,27 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {/* Fillers */}
             <a
               href="/behandlingar?category=fillers"
-              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-7"
             >
               <div className="flex items-center gap-3">
-                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                <div className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14">
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
                   <img
                     src="/icons/fillers.png"
                     alt="Fillers"
-                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="relative h-5 w-5 opacity-80 transition-transform duration-300 group-hover:scale-110 sm:h-6 sm:w-6"
                   />
                 </div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
                   Fillers
                 </p>
               </div>
 
-              <ul className="mt-5 space-y-2 text-gray-800">
+              <ul className="mt-4 space-y-1.5 text-sm text-gray-800 sm:text-base">
                 <li>• Läppar (upp till 1 ml)</li>
                 <li>• Nasolabialveck</li>
                 <li>• Kindben</li>
@@ -141,23 +141,23 @@ export default function Home() {
             {/* Botox */}
             <a
               href="/behandlingar?category=botox"
-              className="block rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="block rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-7"
             >
               <div className="flex items-center gap-3">
-                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                <div className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14">
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
                   <img
                     src="/icons/botox.png"
                     alt="Botox"
-                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="relative h-5 w-5 opacity-80 transition-transform duration-300 group-hover:scale-110 sm:h-6 sm:w-6"
                   />
                 </div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
                   Botox
                 </p>
               </div>
 
-              <ul className="mt-5 space-y-2 text-gray-800">
+              <ul className="mt-4 space-y-1.5 text-sm text-gray-800 sm:text-base">
                 <li>• 1 område</li>
                 <li>• 2 områden</li>
                 <li>• 3 områden</li>
@@ -169,23 +169,23 @@ export default function Home() {
             {/* Medicinskt */}
             <a
               href="/behandlingar?category=medicinskt"
-              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-7"
             >
               <div className="flex items-center gap-3">
-                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                <div className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14">
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
                   <img
                     src="/icons/medical.png"
                     alt="Medicinskt"
-                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="relative h-5 w-5 opacity-80 transition-transform duration-300 group-hover:scale-110 sm:h-6 sm:w-6"
                   />
                 </div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
                   Medicinskt
                 </p>
               </div>
 
-              <ul className="mt-5 space-y-2 text-gray-800">
+              <ul className="mt-4 space-y-1.5 text-sm text-gray-800 sm:text-base">
                 <li>• Bruxism (tandgnissling)</li>
                 <li>• Svettbehandling armhålor</li>
               </ul>
@@ -194,18 +194,18 @@ export default function Home() {
             {/* Konsultation */}
             <a
               href="/behandlingar?category=konsultation"
-              className="block rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="block rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-7"
             >
               <div className="flex items-center gap-3">
-                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                <div className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14">
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
                   <img
                     src="/icons/consultation.png"
                     alt="Konsultation"
-                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="relative h-5 w-5 opacity-80 transition-transform duration-300 group-hover:scale-110 sm:h-6 sm:w-6"
                   />
                 </div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
                   Konsultation
                 </p>
               </div>
