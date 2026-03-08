@@ -1,26 +1,54 @@
-import Navbar from "../components/Navbar";
+"use client";
+import { useEffect } from "react";
 
 export default function Home() {
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scroll = window.scrollY;
+
+      const overlay = document.getElementById("hero-overlay");
+      const text = document.getElementById("hero-text");
+
+      if (!overlay || !text) return;
+
+      const opacity = Math.min(scroll / 400, 1);
+
+      overlay.style.opacity = `${1 - opacity * 0.6}`;
+      text.style.opacity = `${1 - opacity}`;
+      text.style.transform = `translateY(${scroll * 0.2}px)`;
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <main className="relative">
-            <div id="top" />
-      <Navbar />
+      <div id="top" />
 
-            {/* HERO */}
-      <section className="relative pt-16 h-[90vh] min-h-[620px] w-full bg-[url('/hero.jpg')] bg-cover bg-center">
-        {/* gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/55" />
-
-        {/* subtle vignette */}
+      {/* HERO */}
+      <section
+  id="hero"
+  className="relative pt-16 h-[90vh] min-h-[620px] w-full bg-[url('/hero.jpg')] bg-cover bg-center transition-all duration-700"
+>
+        <div
+  id="hero-overlay"
+  className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-black/65 transition-all duration-700"
+/>
         <div className="absolute inset-0 [box-shadow:inset_0_0_120px_rgba(0,0,0,0.55)]" />
 
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-6 text-center text-white">
+        <div
+  id="hero-text"
+  className="relative mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-6 text-center text-white transition-all duration-500"
+>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
-            Klinik Aethera • Vetlanda
+            Klinik Aethera
           </p>
 
           <h1 className="mt-5 text-4xl font-semibold leading-[1.05] md:text-6xl">
-            Fillers, Botox & Behandlingar
+            Estetiska injektionsbehandlingar
           </h1>
 
           <p className="mt-6 max-w-2xl text-base text-white/85 md:text-lg">
@@ -30,12 +58,6 @@ export default function Home() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
-              href="#boka"
-              className="rounded-2xl bg-white px-6 py-3 font-medium text-black shadow-sm hover:opacity-90"
-            >
-              Boka konsultation
-            </a>
-            <a
               href="#behandlingar"
               className="rounded-2xl border border-white/70 px-6 py-3 font-medium text-white hover:bg-white/10"
             >
@@ -43,7 +65,6 @@ export default function Home() {
             </a>
           </div>
 
-          {/* premium info bar */}
           <div className="mt-12 w-full max-w-4xl rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-md">
             <div className="grid grid-cols-1 gap-6 text-sm md:grid-cols-3">
               <div>
@@ -63,7 +84,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* small scroll hint */}
           <div className="mt-10 text-xs text-white/60">
             Scrolla för att läsa mer ↓
           </div>
@@ -72,7 +92,7 @@ export default function Home() {
 
       {/* BEHANDLINGAR */}
       <section id="behandlingar" className="bg-white py-20">
-                <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
               Behandlingar
@@ -91,10 +111,18 @@ export default function Home() {
 
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {/* Fillers */}
-            <div className="rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm hover:shadow-md transition">
+            <a
+              href="/behandlingar?category=fillers"
+              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-white">
-                  ✦
+                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
+                  <img
+                    src="/icons/fillers.png"
+                    alt="Fillers"
+                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
                   Fillers
@@ -108,13 +136,21 @@ export default function Home() {
                 <li>• Haka</li>
                 <li>• Käklinjer</li>
               </ul>
-            </div>
+            </a>
 
             {/* Botox */}
-            <div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-md transition">
+            <a
+              href="/behandlingar?category=botox"
+              className="block rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-white">
-                  ⟡
+                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
+                  <img
+                    src="/icons/botox.png"
+                    alt="Botox"
+                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
                   Botox
@@ -128,13 +164,21 @@ export default function Home() {
                 <li>• 4 områden</li>
                 <li>• 5 områden eller fler</li>
               </ul>
-            </div>
+            </a>
 
             {/* Medicinskt */}
-            <div className="rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm hover:shadow-md transition">
+            <a
+              href="/behandlingar?category=medicinskt"
+              className="block rounded-3xl border border-gray-200 bg-[#F5F1EC] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-white">
-                  ✺
+                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
+                  <img
+                    src="/icons/medical.png"
+                    alt="Medicinskt"
+                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
                   Medicinskt
@@ -145,13 +189,21 @@ export default function Home() {
                 <li>• Bruxism (tandgnissling)</li>
                 <li>• Svettbehandling armhålor</li>
               </ul>
-            </div>
+            </a>
 
             {/* Konsultation */}
-            <div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-md transition">
+            <a
+              href="/behandlingar?category=konsultation"
+              className="block rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+            >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-white">
-                  ✓
+                <div className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/40 bg-white/10 shadow-md backdrop-blur-lg transition-transform duration-300 hover:scale-105">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-70" />
+                  <img
+                    src="/icons/consultation.png"
+                    alt="Konsultation"
+                    className="relative h-6 w-6 opacity-80 transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-gray-700">
                   Konsultation
@@ -162,14 +214,7 @@ export default function Home() {
                 Obligatorisk konsultation minst{" "}
                 <span className="font-semibold">48 timmar</span> innan behandling.
               </p>
-
-              <a
-                href="#boka"
-                className="mt-6 inline-flex rounded-2xl bg-black px-5 py-3 text-sm font-medium text-white hover:opacity-90"
-              >
-                Boka konsultation
-              </a>
-            </div>
+            </a>
           </div>
 
           <div className="mt-12 flex justify-center">
@@ -205,14 +250,14 @@ export default function Home() {
               Legitimerad tandläkare med certifiering inom estetiska injektioner
             </h2>
 
-            <p className="mt-6 text-black/80 leading-relaxed">
+            <p className="mt-6 leading-relaxed text-black/80">
               På Klinik Aethera är målet att skapa ett fräscht och naturligt
               resultat med hög patientsäkerhet. Behandlingarna utförs med
               medicinsk precision, tydlig information och ett lugnt,
               professionellt bemötande.
             </p>
 
-            <p className="mt-4 text-black/80 leading-relaxed">
+            <p className="mt-4 leading-relaxed text-black/80">
               Alla injektionsbehandlingar föregås av en konsultation minst{" "}
               <span className="font-semibold">48 timmar</span> innan behandling,
               där vi går igenom mål, förväntningar, risker och eftervård.
@@ -235,7 +280,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-            {/* BOKA */}
+
+      {/* BOKA */}
       <section id="boka" className="bg-[#F5F1EC] py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
@@ -270,7 +316,8 @@ export default function Home() {
           </p>
         </div>
       </section>
-                  {/* INSTAGRAM */}
+
+      {/* INSTAGRAM */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -296,9 +343,7 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Luxury asymmetrical grid */}
           <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-12">
-            {/* Big feature */}
             <a
               href="https://www.instagram.com/klinik.aethera/"
               target="_blank"
@@ -312,14 +357,13 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0 opacity-0 transition group-hover:opacity-100" />
               <div className="absolute bottom-5 left-5 right-5 opacity-0 transition group-hover:opacity-100">
-                <p className="text-white/90 text-sm font-medium">
+                <p className="text-sm font-medium text-white/90">
                   Se fler bilder på Instagram
                 </p>
-                <p className="text-white/70 text-xs">@klinik.aethera</p>
+                <p className="text-xs text-white/70">@klinik.aethera</p>
               </div>
             </a>
 
-            {/* Right stack */}
             <div className="grid grid-cols-2 gap-4 md:col-span-5">
               {["ig2.jpg", "ig3.jpg", "ig4.jpg", "ig5.jpg"].map((img) => (
                 <a
@@ -339,7 +383,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Wide bottom */}
             <a
               href="https://www.instagram.com/klinik.aethera/"
               target="_blank"
@@ -356,11 +399,13 @@ export default function Home() {
           </div>
 
           <p className="mt-6 text-sm text-gray-500">
-            Tips: använd bilder i samma stil (ljus, neutral bakgrund) för en mer exklusiv känsla.
+            Tips: använd bilder i samma stil (ljus, neutral bakgrund) för en mer
+            exklusiv känsla.
           </p>
         </div>
       </section>
-            {/* KONTAKT */}
+
+      {/* KONTAKT */}
       <section id="kontakt" className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="rounded-3xl border border-gray-200 bg-[#F5F1EC] p-10 md:p-12">
@@ -373,14 +418,43 @@ export default function Home() {
                   Kontakta Klinik Aethera
                 </h2>
                 <p className="mt-4 text-gray-700">
-                  Har du frågor innan du bokar? Hör gärna av dig så hjälper vi dig.
+                  Har du frågor innan du bokar? Hör gärna av dig så hjälper vi
+                  dig.
                 </p>
               </div>
 
               <div className="space-y-4 text-gray-800">
                 <div>
                   <p className="text-sm font-semibold">E-post</p>
-                  <p className="text-gray-700">klinik.aethera@gmail.com</p>
+                  <a
+  href="mailto:klinik.aethera@gmail.com"
+  className="text-gray-700 underline hover:opacity-80"
+>
+  klinik.aethera@gmail.com
+</a>
+<div className="mt-4">
+  <p className="text-sm font-semibold">Sociala medier</p>
+
+  <div className="mt-2 flex gap-4">
+    <a
+      href="https://www.instagram.com/klinik.aethera/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sm font-medium underline hover:opacity-80"
+    >
+      Instagram
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@klinik.aethera"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sm font-medium underline hover:opacity-80"
+    >
+      TikTok
+    </a>
+  </div>
+</div>
                 </div>
                 <div>
                   <p className="text-sm font-semibold">Plats</p>
@@ -402,12 +476,17 @@ export default function Home() {
                 >
                   Boka tid
                 </a>
+                <a
+  href="/vanliga-fragor"
+  className="inline-flex rounded-2xl border border-gray-300 px-6 py-3 font-medium hover:bg-gray-50"
+>
+  Vanliga frågor
+</a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* FOOTER */}
       <footer className="bg-[#0F0F0F] py-12 text-white">
         <div className="mx-auto max-w-6xl px-6">
@@ -415,10 +494,12 @@ export default function Home() {
             <div>
               <p className="text-lg font-semibold tracking-wide">AETHERA</p>
               <p className="mt-3 max-w-sm text-sm text-white/70">
-                Estetiska injektionsbehandlingar med fokus på naturliga resultat och hög patientsäkerhet.
+                Estetiska injektionsbehandlingar med fokus på naturliga resultat
+                och hög patientsäkerhet.
               </p>
               <p className="mt-6 text-xs text-white/50">
-                © {new Date().getFullYear()} Klinik Aethera. Alla rättigheter förbehållna.
+                © {new Date().getFullYear()} Klinik Aethera. Alla rättigheter
+                förbehållna.
               </p>
             </div>
 

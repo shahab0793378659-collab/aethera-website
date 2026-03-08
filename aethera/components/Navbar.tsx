@@ -1,109 +1,197 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
+    const onHashChange = () => setHash(window.location.hash);
+
     onScroll();
+    onHashChange();
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
-  // Close menu when clicking a link
   const close = () => setOpen(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/" && hash === "";
+    if (href === "/behandlingar") return pathname === "/behandlingar";
+    if (href === "/vanliga-fragor") return pathname === "/vanliga-fragor";
+    if (href === "/#om") return pathname === "/" && hash === "#om";
+    if (href === "/#kontakt") return pathname === "/" && hash === "#kontakt";
+    return false;
+  };
+
+  const navLinkClass = (href: string) =>
+    [
+      "rounded-xl px-3 py-2 text-sm uppercase tracking-wider transition",
+      isActive(href)
+        ? "bg-black text-white"
+        : "text-black/80 hover:bg-black/5",
+    ].join(" ");
 
   return (
     <header
       className={[
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+        "fixed top-0 left-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "bg-white/70 backdrop-blur-md border-b border-black/10"
-          : "bg-transparent",
+          ? "border-b border-black/10 bg-white/75 backdrop-blur-md"
+          : "border-b border-black/10 bg-white",
       ].join(" ")}
     >
-      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <a
-          href="#top"
-          onClick={close}
-          className={[
-            "text-lg font-semibold tracking-wide transition-colors",
-            scrolled ? "text-black" : "text-white",
-          ].join(" ")}
-        >
-          AETHERA
-        </a>
+      <div className="mx-auto max-w-6xl px-6 py-4">
 
-        {/* Desktop nav */}
-        <nav
-          className={[
-            "hidden md:flex gap-8 text-sm uppercase tracking-wider transition-colors",
-            scrolled ? "text-black/80" : "text-white/85",
-          ].join(" ")}
-        >
-          <a href="/behandlingar" className="hover:opacity-70">
-  Behandlingar
-</a>
-          <a href="#om" className="hover:opacity-70">
-            Om
-          </a>
-          <a href="#kontakt" className="hover:opacity-70">
-            Kontakt
-          </a>
-        </nav>
+        {/* DESKTOP */}
+        <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
+          
+          {/* Logo */}
+          <div className="flex items-center">
+            <a href="/" onClick={close}>
+              <img
+                src="/logo.png"
+                alt="Klinik Aethera"
+                className="h-10 w-auto"
+              />
+            </a>
+          </div>
 
-        <div className="flex items-center gap-3">
-          <a
-            href="#boka"
-            className={[
-              "hidden sm:inline-flex rounded-2xl px-5 py-2 text-sm font-medium transition-all",
-              scrolled
-                ? "bg-black text-white hover:opacity-90"
-                : "bg-white text-black hover:opacity-90",
-            ].join(" ")}
-          >
-            Boka tid
+          {/* Center navigation */}
+          <nav className="flex items-center justify-center gap-2">
+            <a href="/" onClick={close} className={navLinkClass("/")}>
+              Hem
+            </a>
+
+            <a
+              href="/behandlingar"
+              onClick={close}
+              className={navLinkClass("/behandlingar")}
+            >
+              Behandlingar
+            </a>
+
+            <a href="/#om" onClick={close} className={navLinkClass("/#om")}>
+              Om
+            </a>
+
+            <a
+              href="/#kontakt"
+              onClick={close}
+              className={navLinkClass("/#kontakt")}
+            >
+              Kontakt
+            </a>
+
+            <a
+              href="/vanliga-fragor"
+              onClick={close}
+              className={navLinkClass("/vanliga-fragor")}
+            >
+              Vanliga frågor
+            </a>
+          </nav>
+
+          {/* Right button */}
+          <div className="flex justify-end">
+            <a
+              href="/#boka"
+              className="inline-flex rounded-2xl bg-black px-5 py-2 text-sm font-medium text-white hover:opacity-90"
+            >
+              Boka tid
+            </a>
+          </div>
+        </div>
+
+
+        {/* MOBILE */}
+        <div className="relative flex items-center justify-between md:hidden">
+
+          {/* Logo left */}
+          <a href="/" onClick={close}>
+            <img
+              src="/logo.png"
+              alt="Klinik Aethera"
+              className="h-9 w-auto"
+            />
           </a>
 
-          {/* Mobile button */}
+          {/* Center text */}
+          <div className="absolute left-1/2 -translate-x-1/2 font-semibold tracking-wide">
+            Aethera
+          </div>
+
+          {/* Hamburger */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label="Öppna meny"
-            className={[
-              "md:hidden inline-flex items-center justify-center rounded-2xl px-3 py-2 transition",
-              scrolled ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10",
-            ].join(" ")}
+            className="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-black hover:bg-black/5"
           >
-            {/* simple hamburger icon */}
-            <span className="text-xl leading-none">{open ? "✕" : "☰"}</span>
+            <span className="text-xl">{open ? "✕" : "☰"}</span>
           </button>
+
         </div>
       </div>
 
-      {/* Mobile menu panel */}
+      {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden border-t border-black/10 bg-white/90 backdrop-blur-md">
-          <div className="mx-auto max-w-6xl px-6 py-4 flex flex-col gap-3 text-sm">
-            <a href="/behandlingar" onClick={close} className="py-2">
-  Behandlingar
-</a>
-            <a href="#om" onClick={close} className="py-2">
+        <div className="border-t border-black/10 bg-white/95 backdrop-blur-md md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4">
+
+            <a href="/" onClick={close} className={navLinkClass("/")}>
+              Hem
+            </a>
+
+            <a
+              href="/behandlingar"
+              onClick={close}
+              className={navLinkClass("/behandlingar")}
+            >
+              Behandlingar
+            </a>
+
+            <a href="/#om" onClick={close} className={navLinkClass("/#om")}>
               Om
             </a>
-            <a href="#kontakt" onClick={close} className="py-2">
+
+            <a
+              href="/#kontakt"
+              onClick={close}
+              className={navLinkClass("/#kontakt")}
+            >
               Kontakt
             </a>
+
             <a
-              href="#boka"
+              href="/vanliga-fragor"
+              onClick={close}
+              className={navLinkClass("/vanliga-fragor")}
+            >
+              Vanliga frågor
+            </a>
+
+            <a
+              href="/#boka"
               onClick={close}
               className="mt-2 inline-flex justify-center rounded-2xl bg-black px-5 py-3 font-medium text-white"
             >
               Boka tid
             </a>
+
           </div>
         </div>
       )}

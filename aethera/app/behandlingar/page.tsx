@@ -1,14 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 type ServiceItem = {
   id: string;
   title: string;
-  duration: string; // e.g. "15 min"
-  price: string; // e.g. "1 500 kr"
+  duration: string;
+  price: string;
   details?: string;
-  bookUrl: string; // Meridiq booking url
+  bookUrl: string;
 };
 
 type Category = {
@@ -23,6 +24,8 @@ function cx(...classes: Array<string | false | undefined>) {
 }
 
 export default function BehandlingarPage() {
+  const searchParams = useSearchParams();
+
   const categories: Category[] = useMemo(
     () => [
       {
@@ -194,6 +197,20 @@ export default function BehandlingarPage() {
   const [active, setActive] = useState<Category["id"]>("konsultation");
   const [openId, setOpenId] = useState<string | null>(null);
 
+  useEffect(() => {
+    const category = searchParams.get("category");
+
+    if (
+      category === "konsultation" ||
+      category === "botox" ||
+      category === "fillers" ||
+      category === "medicinskt"
+    ) {
+      setActive(category);
+      setOpenId(null);
+    }
+  }, [searchParams]);
+
   const activeCategory = categories.find((c) => c.id === active)!;
 
   return (
@@ -213,7 +230,6 @@ export default function BehandlingarPage() {
           </p>
         </div>
 
-        {/* Tabs */}
         <div className="mt-10 flex flex-wrap justify-center gap-2">
           {categories.map((c) => (
             <button
@@ -234,12 +250,10 @@ export default function BehandlingarPage() {
           ))}
         </div>
 
-        {/* Intro */}
         <div className="mx-auto mt-10 max-w-3xl text-center text-gray-700">
           <p>{activeCategory.intro}</p>
         </div>
 
-        {/* List */}
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-gray-200">
           {activeCategory.items.map((item) => {
             const isOpen = openId === item.id;
@@ -250,10 +264,9 @@ export default function BehandlingarPage() {
                 className="border-t border-gray-200 first:border-t-0"
               >
                 <div className="flex items-stretch">
-                  {/* Left: main toggle */}
                   <button
                     onClick={() => setOpenId(isOpen ? null : item.id)}
-                    className="flex-1 px-6 py-5 text-left hover:bg-gray-50 transition"
+                    className="flex-1 px-6 py-5 text-left transition hover:bg-gray-50"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div className="min-w-0">
@@ -263,15 +276,14 @@ export default function BehandlingarPage() {
                       <div className="flex items-center gap-4 text-sm text-gray-600">
                         <span className="hidden sm:inline">{item.duration}</span>
                         <span className="w-[110px] text-right">{item.price}</span>
-                        <span className="ml-2 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
-  {isOpen ? "Stäng" : "Mer info"}
-</span>
+                        <span className="ml-2 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-3 py-1 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
+                          {isOpen ? "Stäng" : "Mer info"}
+                        </span>
                       </div>
                     </div>
                   </button>
 
-                  {/* Right: book button */}
-                  <div className="hidden md:flex items-center pr-6">
+                  <div className="hidden items-center pr-6 md:flex">
                     <a
                       href={item.bookUrl}
                       target="_blank"
@@ -283,8 +295,7 @@ export default function BehandlingarPage() {
                   </div>
                 </div>
 
-                {/* Mobile book button */}
-                <div className="md:hidden px-6 pb-4">
+                <div className="px-6 pb-4 md:hidden">
                   <a
                     href={item.bookUrl}
                     target="_blank"
@@ -297,7 +308,7 @@ export default function BehandlingarPage() {
 
                 {isOpen && (
                   <div className="px-6 pb-6">
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm leading-relaxed text-gray-700">
                       {item.details ||
                         "Mer information kommer snart. Boka gärna konsultation för en individuell bedömning."}
                     </p>
