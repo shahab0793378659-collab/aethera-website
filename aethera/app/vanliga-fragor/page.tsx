@@ -122,7 +122,7 @@ export default function VanligaFragorPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a
               href="mailto:klinik.aethera@gmail.com"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium text-black/80 hover:bg-white/60"
             >
               Mejla oss
             </a>
@@ -131,7 +131,7 @@ export default function VanligaFragorPage() {
               href="https://www.instagram.com/klinik.aethera/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium text-black/80 hover:bg-white/60"
             >
               Instagram
             </a>
@@ -140,7 +140,7 @@ export default function VanligaFragorPage() {
               href="https://www.tiktok.com/@klinik.aethera"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium hover:bg-white/60"
+              className="inline-flex rounded-2xl border border-gray-300 px-5 py-3 text-sm font-medium text-black/80 hover:bg-white/60"
             >
               TikTok
             </a>
