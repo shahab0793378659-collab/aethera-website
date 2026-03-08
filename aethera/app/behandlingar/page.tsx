@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { Suspense, useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 type ServiceItem = {
@@ -23,7 +23,7 @@ function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function BehandlingarPage() {
+function BehandlingarContent() {
   const searchParams = useSearchParams();
 
   const categories: Category[] = useMemo(
@@ -342,5 +342,13 @@ export default function BehandlingarPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function BehandlingarPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-white pt-24" />}>
+      <BehandlingarContent />
+    </Suspense>
   );
 }
