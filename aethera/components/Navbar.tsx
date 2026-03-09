@@ -8,32 +8,25 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [hash, setHash] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    const onHashChange = () => setHash(window.location.hash);
-
     onScroll();
-    onHashChange();
-
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("hashchange", onHashChange);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("hashchange", onHashChange);
     };
   }, []);
 
   const close = () => setOpen(false);
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/" && hash === "";
+    if (href === "/") return pathname === "/";
     if (href === "/behandlingar") return pathname === "/behandlingar";
     if (href === "/vanliga-fragor") return pathname === "/vanliga-fragor";
-    if (href === "/#om") return pathname === "/" && hash === "#om";
-    if (href === "/#kontakt") return pathname === "/" && hash === "#kontakt";
+    if (href === "/om") return pathname === "/om";
+    if (href === "/#kontakt") return pathname === "/";
     return false;
   };
 
@@ -79,14 +72,14 @@ export default function Navbar() {
               Behandlingar
             </a>
 
-            <a href="/#om" onClick={close} className={navLinkClass("/#om")}>
+            <a href="/om" onClick={close} className={navLinkClass("/om")}>
               Om
             </a>
 
             <a
               href="/#kontakt"
               onClick={close}
-              className={navLinkClass("/#kontakt")}
+              className="rounded-xl px-3 py-2 text-sm uppercase tracking-wider text-black/80 transition hover:bg-black/5"
             >
               Kontakt
             </a>
@@ -149,14 +142,14 @@ export default function Navbar() {
               Behandlingar
             </a>
 
-            <a href="/#om" onClick={close} className={navLinkClass("/#om")}>
+            <a href="/om" onClick={close} className={navLinkClass("/om")}>
               Om
             </a>
 
             <a
               href="/#kontakt"
               onClick={close}
-              className={navLinkClass("/#kontakt")}
+              className="rounded-xl px-3 py-2 text-sm uppercase tracking-wider text-black/80 transition hover:bg-black/5"
             >
               Kontakt
             </a>
