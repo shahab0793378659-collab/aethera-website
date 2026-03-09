@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import TopInfoBar from "@/components/TopInfoBar";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://klinikaethera.se"),
@@ -49,13 +49,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-      "max-snippet": -1,
-    },
   },
 };
 
@@ -106,8 +99,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicJsonLd) }}
         />
         <Navbar />
-        <TopInfoBar />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

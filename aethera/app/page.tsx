@@ -563,64 +563,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* FOOTER */}
-        <footer className="bg-[#0F0F0F] py-12 text-white">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-              <div>
-                <p className="text-lg font-semibold tracking-wide">AETHERA</p>
-                <p className="mt-3 max-w-sm text-sm text-white/70">
-                  Estetiska injektionsbehandlingar med fokus på naturliga resultat
-                  och hög patientsäkerhet.
-                </p>
-                <p className="mt-6 text-xs text-white/50">
-                  © {new Date().getFullYear()} Klinik Aethera. Alla rättigheter
-                  förbehållna.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-10 text-sm md:grid-cols-3">
-                <div>
-                  <p className="font-semibold">Info</p>
-                  <ul className="mt-4 space-y-2 text-white/70">
-                    <li>
-                      <a href="#behandlingar" className="hover:text-white">
-                        Behandlingar
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/om" className="hover:text-white">
-                        Om
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#boka" className="hover:text-white">
-                        Boka tid
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <p className="font-semibold">Kontakt</p>
-                  <ul className="mt-4 space-y-2 text-white/70">
-                    <li>klinik.aethera@gmail.com</li>
-                    <li>Vetlanda</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <p className="font-semibold">Viktigt</p>
-                  <ul className="mt-4 space-y-2 text-white/70">
-                    <li>Konsultation minst 48h innan</li>
-                    <li>Eftervård enligt instruktion</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        
       </main>
     </>
   );
