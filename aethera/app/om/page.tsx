@@ -25,7 +25,7 @@ export default function OmPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-40">
       <section className="bg-[#F5F1EC] py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div
@@ -149,6 +149,69 @@ export default function OmPage() {
           </div>
         </div>
       </section>
+
+<section className="bg-white py-16 md:py-20">
+  <div className="mx-auto max-w-6xl px-6">
+    <div
+      className="grid grid-cols-1 gap-8 rounded-[2rem] border border-[#E8E0D7] bg-[#F5F1EC] p-8 shadow-[0_25px_70px_rgba(0,0,0,0.05)] opacity-0 translate-y-8 transition-all duration-700 md:grid-cols-2 md:p-10"
+      data-reveal
+    >
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+          Var vi finns
+        </p>
+
+        <h2 className="mt-4 text-3xl font-semibold text-gray-900">
+          Besök Klinik Aethera i Vetlanda
+        </h2>
+
+        <div className="mt-5 space-y-3 text-[17px] leading-relaxed text-gray-700">
+          <p>
+            Klinik Aethera finns på en central adress i Vetlanda och är lätt att
+            hitta för dig som kommer från både Vetlanda och närliggande orter.
+          </p>
+
+          <p className="font-medium text-gray-900">
+            Stationsgatan 4A, 574 31, Vetlanda
+          </p>
+
+          <p>
+            Här möts du i en lugn och professionell miljö med fokus på naturliga
+            resultat, trygghet och ett personligt bemötande.
+          </p>
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Stationsgatan+4A+574+31+Vetlanda"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex rounded-2xl bg-black px-6 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:opacity-90"
+          >
+            Öppna i Google Maps
+          </a>
+
+          <a
+            href="/#boka"
+            className="inline-flex rounded-2xl border border-gray-300 px-6 py-3 font-medium text-black/80 transition hover:-translate-y-0.5 hover:bg-white/60"
+          >
+            Boka konsultation
+          </a>
+        </div>
+      </div>
+
+      <div className="overflow-hidden rounded-[1.5rem] border border-[#E8E0D7] bg-white shadow-sm">
+        <iframe
+          title="Klinik Aethera karta"
+          src="https://www.google.com/maps?q=Stationsgatan+4A,+574+31,+Vetlanda&output=embed"
+          className="h-[320px] w-full md:h-full"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-6">

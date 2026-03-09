@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import TopInfoBar from "@/components/TopInfoBar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://klinikaethera.se"),
-
   title: {
     default:
       "Klinik Aethera | Botox, fillers och estetiska injektionsbehandlingar i Vetlanda",
     template: "%s | Klinik Aethera",
   },
-
   description:
     "Klinik Aethera i Vetlanda erbjuder botox, fillers och estetiska injektionsbehandlingar med fokus på naturliga resultat. Legitimerad tandläkare. Bokning online för Vetlanda, Jönköping och omnejd.",
-
   keywords: [
     "botox Vetlanda",
     "fillers Vetlanda",
@@ -27,11 +25,9 @@ export const metadata: Metadata = {
     "estetisk klinik Vetlanda",
     "Klinik Aethera",
   ],
-
   alternates: {
     canonical: "https://klinikaethera.se",
   },
-
   openGraph: {
     title:
       "Klinik Aethera | Botox och fillers i Vetlanda – naturliga resultat",
@@ -50,7 +46,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -71,15 +66,13 @@ const clinicJsonLd = {
   image: "https://klinikaethera.se/hero.jpg",
   url: "https://klinikaethera.se",
   email: "klinik.aethera@gmail.com",
-
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Stationsgatan 4C",
+    streetAddress: "Stationsgatan 4A",
     addressLocality: "Vetlanda",
-    postalCode: "57431",
+    postalCode: "574 31",
     addressCountry: "SE",
   },
-
   areaServed: [
     "Vetlanda",
     "Jönköping",
@@ -89,13 +82,11 @@ const clinicJsonLd = {
     "Tranås",
     "Småland",
   ],
-
   medicalSpecialty: [
     "Botox",
     "Fillers",
     "Estetiska injektionsbehandlingar",
   ],
-
   sameAs: [
     "https://www.instagram.com/klinik.aethera/",
     "https://www.tiktok.com/@klinik.aethera",
@@ -115,6 +106,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicJsonLd) }}
         />
         <Navbar />
+        <TopInfoBar />
         {children}
       </body>
     </html>

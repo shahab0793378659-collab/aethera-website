@@ -86,7 +86,7 @@ export default function Home() {
         {/* HERO */}
         <section
           id="hero"
-          className="relative h-[90vh] min-h-[620px] w-full bg-[url('/hero.jpg')] bg-cover bg-center pt-16 transition-all duration-700"
+          className="relative h-[90vh] min-h-[620px] w-full bg-[url('/hero.jpg')] bg-cover bg-center pt-32 transition-all duration-700"
         >
           <div
             id="hero-overlay"
@@ -535,7 +535,7 @@ export default function Home() {
                   <div>
                     <p className="text-sm font-semibold">Plats</p>
                     <p className="text-gray-700">Vetlanda</p>
-                    <p className="text-gray-700">Stationsgatan 4C</p>
+                    <p className="text-gray-700">Stationsgatan 4A, 574 31 Vetlanda</p>
                   </div>
                 </div>
 
@@ -590,7 +590,7 @@ export default function Home() {
                       </a>
                     </li>
                     <li>
-                      <a href="#om" className="hover:text-white">
+                      <a href="/om" className="hover:text-white">
                         Om
                       </a>
                     </li>
