@@ -2,11 +2,6 @@
 
 import { useEffect } from "react";
 
-export const metadata = {
-  title: "Om",
-  description:
-    "Läs mer om Shahab Mohammadi, filosofin bakom Klinik Aethera och varför naturliga resultat står i centrum för varje behandling i Vetlanda.",
-};
 function revealElements() {
   const elements = document.querySelectorAll("[data-reveal]");
 

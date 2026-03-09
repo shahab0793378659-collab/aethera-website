@@ -2,12 +2,6 @@
 
 import { useState } from "react";
 
-export const metadata = {
-  title: "Vanliga frågor",
-  description:
-    "Vanliga frågor om botox, fillers, konsultation, eftervård och estetiska injektionsbehandlingar hos Klinik Aethera i Vetlanda.",
-};
-
 export default function VanligaFragorPage() {
   const [open, setOpen] = useState<number | null>(0);
 

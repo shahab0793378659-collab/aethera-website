@@ -3,12 +3,6 @@
 import { Suspense, useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-export const metadata = {
-  title: "Behandlingar",
-  description:
-    "Se behandlingar och priser för botox, fillers, bruxism och svettbehandling i Vetlanda. Klinik Aethera erbjuder estetiska injektionsbehandlingar med fokus på naturliga resultat.",
-};
-
 type ServiceItem = {
   id: string;
   title: string;
