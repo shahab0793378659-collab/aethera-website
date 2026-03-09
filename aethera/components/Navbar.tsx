@@ -24,9 +24,9 @@ export default function Navbar() {
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     if (href === "/behandlingar") return pathname === "/behandlingar";
-    if (href === "/vanliga-fragor") return pathname === "/vanliga-fragor";
     if (href === "/om") return pathname === "/om";
-    if (href === "/#kontakt") return pathname === "/";
+    if (href === "/vanliga-fragor") return pathname === "/vanliga-fragor";
+    if (href === "/kontakt") return pathname === "/kontakt";
     return false;
   };
 
@@ -77,19 +77,19 @@ export default function Navbar() {
             </a>
 
             <a
-              href="/#kontakt"
-              onClick={close}
-              className="rounded-xl px-3 py-2 text-sm uppercase tracking-wider text-black/80 transition hover:bg-black/5"
-            >
-              Kontakt
-            </a>
-
-            <a
               href="/vanliga-fragor"
               onClick={close}
               className={navLinkClass("/vanliga-fragor")}
             >
               Vanliga frågor
+            </a>
+
+            <a
+              href="/kontakt"
+              onClick={close}
+              className={navLinkClass("/kontakt")}
+            >
+              Kontakt
             </a>
           </nav>
 
@@ -147,19 +147,19 @@ export default function Navbar() {
             </a>
 
             <a
-              href="/#kontakt"
-              onClick={close}
-              className="rounded-xl px-3 py-2 text-sm uppercase tracking-wider text-black/80 transition hover:bg-black/5"
-            >
-              Kontakt
-            </a>
-
-            <a
               href="/vanliga-fragor"
               onClick={close}
               className={navLinkClass("/vanliga-fragor")}
             >
               Vanliga frågor
+            </a>
+
+            <a
+              href="/kontakt"
+              onClick={close}
+              className={navLinkClass("/kontakt")}
+            >
+              Kontakt
             </a>
 
             <a

@@ -39,6 +39,11 @@ export default function SiteFooter() {
                     Vanliga frågor
                   </a>
                 </li>
+                <li>
+  <a href="/kontakt" className="hover:text-white">
+    Kontakt
+  </a>
+</li>
               </ul>
             </div>
 
