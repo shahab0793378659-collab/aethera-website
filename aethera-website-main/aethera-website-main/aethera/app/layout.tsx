@@ -28,14 +28,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://klinikaethera.se",
   },
-  icons: {
-    icon: [
-      { url: "/logo.png", type: "image/png" },
-      { url: "/favicon.ico" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/logo.png",
-  },
   openGraph: {
     title:
       "Klinik Aethera | Botox och fillers i Vetlanda – naturliga resultat",
