@@ -95,11 +95,11 @@ export default function Navbar() {
 
           <div className="flex justify-end">
             <a
-              href="/#boka"
-              className="inline-flex rounded-2xl bg-black px-5 py-2 text-sm font-medium text-white hover:opacity-90"
-            >
-              Boka tid
-            </a>
+  href="/behandlingar"
+  className="inline-flex rounded-2xl bg-black px-5 py-2 text-sm font-medium text-white hover:opacity-90"
+>
+  Boka tid
+</a>
           </div>
         </div>
 
@@ -162,13 +162,13 @@ export default function Navbar() {
               Kontakt
             </a>
 
-            <a
-              href="/#boka"
-              onClick={close}
-              className="mt-2 inline-flex justify-center rounded-2xl bg-black px-5 py-3 font-medium text-white"
-            >
-              Boka tid
-            </a>
+          <a
+  href="/behandlingar"
+  onClick={close}
+  className="mt-2 inline-flex justify-center rounded-2xl bg-black px-5 py-3 font-medium text-white"
+>
+  Boka tid
+</a>
           </div>
         </div>
       )}
