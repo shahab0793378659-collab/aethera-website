@@ -10,6 +10,11 @@ export const metadata: Metadata = {
       "Klinik Aethera | Botox, fillers och estetiska injektionsbehandlingar i Vetlanda och Småland",
     template: "%s | Klinik Aethera",
   },
+icons: {
+  icon: "/favicon.ico",
+  shortcut: "/favicon.ico",
+  apple: "/favicon.ico",
+},
   description:
     "Klinik Aethera erbjuder botox, fillers och estetiska injektionsbehandlingar i Vetlanda med patienter från Eksjö, Nässjö, Sävsjö, Tranås, Vimmerby och närliggande orter i Småland. Legitimerad tandläkare, fokus på naturliga resultat och medicinsk precision.",
   keywords: [
@@ -76,17 +81,14 @@ const clinicJsonLd = {
     addressCountry: "SE",
   },
   areaServed: [
-  "Vetlanda",
-  "Eksjö",
-  "Nässjö",
-  "Sävsjö",
-  "Tranås",
-  "Vimmerby",
-  "Aneby",
-  "Hultsfred",
-  "Jönköping",
-  "Småland",
-],
+    "Vetlanda",
+    "Jönköping",
+    "Eksjö",
+    "Nässjö",
+    "Sävsjö",
+    "Tranås",
+    "Småland",
+  ],
   medicalSpecialty: [
     "Botox",
     "Fillers",
