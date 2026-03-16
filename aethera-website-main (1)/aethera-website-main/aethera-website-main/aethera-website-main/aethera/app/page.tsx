@@ -475,28 +475,6 @@ export default function Home() {
           </div>
         </section>
 
-<section className="bg-[#F8F5F1] py-16 md:py-20">
-  <div className="mx-auto max-w-6xl px-6">
-    <div className="mx-auto max-w-4xl text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-        Upptagningsområde
-      </p>
-
-      <h2 className="mt-4 text-3xl font-semibold text-gray-900 md:text-4xl">
-        Klinik i Vetlanda – för dig även från närliggande orter
-      </h2>
-
-      <p className="mt-6 text-[17px] leading-relaxed text-gray-700">
-        Klinik Aethera är baserad i Vetlanda och tar emot patienter från hela
-        närområdet, bland annat Eksjö, Nässjö, Sävsjö, Tranås, Vimmerby och
-        andra orter inom cirka en timmes resväg. För dig som söker botox,
-        fillers eller andra estetiska injektionsbehandlingar i Småland erbjuder
-        vi en lugn klinikmiljö, medicinsk precision och naturliga resultat.
-      </p>
-    </div>
-  </div>
-</section>
-
         {/* KONTAKT */}
         <section
           id="kontakt"
