@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -108,14 +109,27 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicJsonLd) }}
-        />
-        <Navbar />
-        {children}
-        <SiteFooter />
-      </body>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicJsonLd) }}
+  />
+  <Navbar />
+  {children}
+  <SiteFooter />
+
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-QNZK3X81ZN"
+    strategy="afterInteractive"
+  />
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QNZK3X81ZN');
+    `}
+  </Script>
+</body>
     </html>
   );
 }
