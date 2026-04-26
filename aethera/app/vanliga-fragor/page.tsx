@@ -49,7 +49,7 @@ export default function VanligaFragorPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-40">
       <div className="mx-auto max-w-4xl px-6 pb-24">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">

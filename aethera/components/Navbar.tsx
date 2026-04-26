@@ -47,7 +47,7 @@ export default function Navbar() {
           : "border-b border-black/10 bg-white",
       ].join(" ")}
     >
-      <div className="mx-auto max-w-6xl px-6 py-4">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
           <div className="flex items-center">
             <a href="/" onClick={close}>
@@ -172,6 +172,11 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      <div className="border-t border-[#B36B45]/20 bg-[#FFF4EA] px-4 py-3 text-center">
+  <p className="text-xs font-semibold tracking-wide text-[#B36B45] drop-shadow-[0_0_6px_rgba(179,107,69,0.25)] sm:text-sm md:text-base">
+    ✨ Just nu 15% rabatt på alla behandlingar under begränsad period. Boka din gratis konsultation nu! ✨
+  </p>
+</div>
     </header>
   );
 }

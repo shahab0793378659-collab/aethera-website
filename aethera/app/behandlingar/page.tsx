@@ -12,6 +12,19 @@ type ServiceItem = {
   bookUrl: string;
 };
 
+const DISCOUNT_PERCENT = 15;
+
+function getDiscountedPrice(price: string) {
+  const isFromPrice = price.toLowerCase().includes("från");
+  const number = Number(price.replace(/\D/g, ""));
+
+  if (!number) return null;
+
+  const discounted = Math.round(number * (1 - DISCOUNT_PERCENT / 100));
+
+  return `${isFromPrice ? "från " : ""}${discounted.toLocaleString("sv-SE")} kr`;
+}
+
 type Category = {
   id: "konsultation" | "botox" | "fillers" | "medicinskt";
   label: string;
@@ -214,7 +227,7 @@ function BehandlingarContent() {
   const activeCategory = categories.find((c) => c.id === active)!;
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-40">
       <div className="mx-auto max-w-6xl px-6 pb-24">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
@@ -229,6 +242,20 @@ function BehandlingarContent() {
             behandling.
           </p>
         </div>
+<div className="mx-auto mb-10 max-w-4xl rounded-3xl border border-[#B36B45]/35 bg-[#FFF8F1] px-6 py-8 text-center shadow-[0_0_35px_rgba(179,107,69,0.12)] md:px-10">
+  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#B36B45]">
+    Tillfällig kampanj
+  </p>
+
+  <h2 className="mt-3 text-3xl font-semibold text-[#8F3F20] md:text-4xl">
+    Just nu 15% rabatt på behandlingar
+  </h2>
+
+  <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 md:text-base">
+    Gäller under en begränsad period. Boka din gratis konsultation nu.
+    Slutlig bedömning sker alltid vid konsultation.
+  </p>
+</div>
 
         <div className="mt-10 flex flex-wrap justify-center gap-2">
           {categories.map((c) => (
@@ -275,7 +302,20 @@ function BehandlingarContent() {
 
                       <div className="flex items-center gap-4 text-sm text-gray-600">
                         <span className="hidden sm:inline">{item.duration}</span>
-                        <span className="w-[110px] text-right">{item.price}</span>
+                        <span className="w-[110px] text-right">
+  {getDiscountedPrice(item.price) ? (
+    <div className="flex flex-col items-end leading-tight">
+      <span className="text-xs text-black/40 line-through">
+        {item.price}
+      </span>
+      <span className="font-semibold text-[#B36B45]">
+        {getDiscountedPrice(item.price)}
+      </span>
+    </div>
+  ) : (
+    item.price
+  )}
+</span>
                         <span className="ml-2 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 px-3 py-1 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
                           {isOpen ? "Stäng" : "Mer info"}
                         </span>
@@ -347,7 +387,7 @@ function BehandlingarContent() {
 
 export default function BehandlingarPage() {
   return (
-    <Suspense fallback={<main className="min-h-screen bg-white pt-24" />}>
+    <Suspense fallback={<main className="min-h-screen bg-white pt-40" />}>
       <BehandlingarContent />
     </Suspense>
   );
